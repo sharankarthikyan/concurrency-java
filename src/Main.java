@@ -20,10 +20,10 @@ public class Main {
             public void run() {
                 System.out.println(ThreadColor.ANSI_RED + "Hello from the anonymous class's implementation of run()");
                 try {
-                    anotherThread.join(); // If any thread calls join method of some other thread,
+                    anotherThread.join(2000); // If any thread calls join method of some other thread,
                     // then current will wait for other thread execution.
                     // Once it gets complete then current thread will start executing again.
-                    System.out.println(ThreadColor.ANSI_RED + "Another thread terminated, so I'm running again.");
+                    System.out.println(ThreadColor.ANSI_RED + "Another thread terminated, or timed out, so I'm running again.");
                 } catch (InterruptedException e) {
                     System.out.println(ThreadColor.ANSI_RED + "I couldn't wait after all. I was interrupted.");
                 }
