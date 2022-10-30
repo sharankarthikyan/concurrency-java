@@ -5,6 +5,12 @@ public class Main {
         Thread anotherThread = new AnotherThread();
         anotherThread.start();
 
+        new Thread() {
+            public void run() {
+                System.out.println("Hello from the anonymous thread.");
+            }
+        }.start();
+
         System.out.println("Hello again from the main thread!!");
     }
 }
