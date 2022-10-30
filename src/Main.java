@@ -23,6 +23,8 @@ public class Main {
         });
         myRunnableThread.start();
 
+        anotherThread.interrupt();
+
         System.out.println(ThreadColor.ANSI_PURPLE + "Hello again from the main thread!!");
     }
 }
