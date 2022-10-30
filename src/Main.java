@@ -13,6 +13,7 @@ public class Main {
 }
 
 class Countdown {
+    private int i;
     public void doCountdown() {
         String color;
 
@@ -28,7 +29,7 @@ class Countdown {
                 break;
         }
 
-        for (int i = 10; i >= 1; i--) {
+        for (i = 10; i >= 1; i--) {
             System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
         }
     }
