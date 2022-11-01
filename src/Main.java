@@ -1,11 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        Countdown countdown1 = new Countdown();
-        Countdown countdown2 = new Countdown();
+        Countdown countdown = new Countdown();
 
-        CountdownThread t1 = new CountdownThread(countdown1);
+        // In below 2 thread processing a same object.
+        // Assume that object is a bank account object, then 2 thread takes a thread and process them parallel.
+        // This cause a problem in bank system.
+        // Hence, synchronization was created. With the help of this no 2 parallel thread can't access the same object, which is present in heap.
+        // This synchronization creates a lock for that object.
+        CountdownThread t1 = new CountdownThread(countdown);
         t1.setName("Thread 1");
-        CountdownThread t2 = new CountdownThread(countdown2);
+        CountdownThread t2 = new CountdownThread(countdown);
         t2.setName("Thread 2");
 
         t1.start();
@@ -15,7 +19,7 @@ public class Main {
 
 class Countdown {
     private int i;
-    public void doCountdown() {
+    public synchronized void doCountdown() { // This is synchronized method.
         String color;
 
         switch (Thread.currentThread().getName()) {
