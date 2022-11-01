@@ -19,7 +19,7 @@ public class Main {
 
 class Countdown {
     private int i;
-    public synchronized void doCountdown() { // This is synchronized method.
+    public void doCountdown() {
         String color;
 
         switch (Thread.currentThread().getName()) {
@@ -34,8 +34,16 @@ class Countdown {
                 break;
         }
 
-        for (i = 10; i >= 1; i--) {
-            System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
+        /*
+            synchronized(object) {
+                // block of code
+            }
+        */
+
+        synchronized(color) { // Don't use local object in synchronized block. Because, it is in thread stack.
+            for (i = 10; i >= 1; i--) {
+                System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
+            }
         }
     }
 }
