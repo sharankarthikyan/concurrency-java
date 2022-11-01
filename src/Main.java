@@ -40,7 +40,7 @@ class Countdown {
             }
         */
 
-        synchronized(color) { // Don't use local object in synchronized block. Because, it is in thread stack.
+        synchronized(this) { // synchronized current object
             for (i = 10; i >= 1; i--) {
                 System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
             }
