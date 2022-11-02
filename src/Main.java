@@ -1,3 +1,8 @@
+// if multiple threads(trains) trying to access
+// this synchronized method on the same Object
+// but only one thread will be able
+// to execute it at a time.
+
 public class Main {
     public static void main(String[] args) {
         Countdown countdown = new Countdown();
