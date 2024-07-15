@@ -2,6 +2,28 @@ package com.rough.random;
 
 import java.util.Random;
 
+// Issues Leading to Deadlock:
+// 1. Busy Waiting:
+//     In both the read() and write() methods, 
+//     while loops that wait for a condition 
+//     (empty for read() and !empty for write()). However, 
+//     these loops do not yield control or allow the threads 
+//     to be notified when the condition changes. This is 
+//     referred to as "busy waiting," where the thread is 
+//     constantly checking the condition without pausing or 
+//     releasing the lock.
+// 2. Lack of Notification:
+//     The write() method should notify waiting threads after 
+//     writing a message, and the read() method should notify 
+//     after reading a message. Without these notifications, 
+//     the threads that are waiting in the while loops may never 
+//     proceed, leading to a deadlock.
+
+// Suggested Fixes:
+//     To resolve the deadlock, you can use wait() and notifyAll() 
+//     methods to manage the state changes and let threads sleep 
+//     while they are waiting for a condition to become true.
+
 public class Main {
     public static void main(String[] args) {
         Message message = new Message();
