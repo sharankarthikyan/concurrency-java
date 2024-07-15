@@ -1,3 +1,5 @@
+package com.rough.random;
+
 import java.util.Random;
 
 public class Main {
@@ -14,18 +16,28 @@ class Message {
 
     public synchronized String read() {
         while (empty) {
-
+//            try {
+//                wait(); // Wait until notified
+//            } catch (InterruptedException e) {
+//                Thread.currentThread().interrupt(); // Restore interrupt status
+//            }
         }
         empty = true;
+//        notifyAll(); // Notify waiting readers
         return message;
     }
 
     public synchronized void write(String message) {
         while (!empty){
-
+//            try {
+//                wait(); // Wait until notified
+//            } catch (InterruptedException e) {
+//                Thread.currentThread().interrupt(); // Restore interrupt status
+//            }
         }
         empty = false;
         this.message = message;
+//        notifyAll(); // Notify waiting readers
     }
 }
 
