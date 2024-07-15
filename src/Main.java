@@ -1,5 +1,3 @@
-package com.rough.random;
-
 import java.util.Random;
 
 // Issues Leading to Deadlock:
